@@ -7,9 +7,11 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket = "dataecho"
-    key    = "terraform/state/dataecho/echostream/main.tfstate"
-    region = "us-west-1"
+  cloud {
+    organization = "PulsePixel"
+    workspaces {
+      project = "echo_stream"
+      name    = "echo_stream_default"
+    }
   }
 }
